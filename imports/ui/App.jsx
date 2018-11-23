@@ -1,13 +1,16 @@
-import React from 'react';
-import Hello from './Hello.jsx';
-import Info from './Info.jsx';
+import React, { Component } from "react";
+import { Meteor } from "meteor/meteor";
 
-const App = () => (
-  <div>
-    <h1>Welcome to Meteor!</h1>
-    <Hello />
-    <Info />
-  </div>
-);
+class App extends Component {
+  startCongest = () => {
+    Meteor.call("congest", (err, result) =>
+      console.log("I will never be called :(")
+    );
+  };
+
+  render() {
+    return <button onClick={this.startCongest}>Start congestion</button>;
+  }
+}
 
 export default App;
